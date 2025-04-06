@@ -16,6 +16,11 @@ export async function POST() {
 
     return NextResponse.json({ activity });
   } catch (error: unknown) {
-    return error;
+    console.error("Error generating activity:", error);
+
+    return NextResponse.json(
+      { error: "Failed to generate activity" },
+      { status: 500 }
+    );
   }
 }

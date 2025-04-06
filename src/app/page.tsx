@@ -23,6 +23,8 @@ export default function App() {
 
   const [finalDecision, setFinalDecision] = useState<string>('');
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const addDecision = (e: FormEvent) => {
     e.preventDefault();
 
@@ -35,8 +37,13 @@ export default function App() {
   const makeDecision = () => {
     if (decisions.length < 2) return;
 
-    const randomIndex = Math.floor(Math.random() * decisions.length);
-    setFinalDecision(`${t.decision}: ${decisions[randomIndex]}`);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * decisions.length);
+      setFinalDecision(`${t.decision}: ${decisions[randomIndex]} !`);
+      setIsLoading(false);
+    }, 1000)   
   }
 
   useEffect(() => {
@@ -85,7 +92,11 @@ export default function App() {
           className={`flex items-center justify-center border border-gray-800 bg-gray-900 rounded-lg p-2 w-full ${disabled ? 'pointer-events-none text-gray-800' : 'text-white cursor-pointer'}`}
           onClick={makeDecision}
           disabled={disabled}
-        >{t.submit}</button>
+        >{isLoading ? 
+          <span
+            className={"animate-spin rounded-full w-4 h-4 border-t-blue-500 border-2"}
+          ></span> : t.submit}
+        </button>
 
         {finalDecision.length > 0 ? (
           <p className="text-sm text-gray-500 mt-4">{finalDecision}</p>

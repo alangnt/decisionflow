@@ -22,9 +22,7 @@ export default function RandomActivity({ currentLanguage }: { currentLanguage: L
             if (!res.ok) throw new Error('Failed to fetch activity');
 
             const data = await res.json();
-            setTimeout(() => {
-                setRandomActivity(data.activity);
-            }, 2000);
+            setRandomActivity(data.activity);
         } catch (err) {
             console.error('Error generating activity:', err);
             setRandomActivity(t.errorFetching || 'Something went wrong!');
@@ -43,7 +41,7 @@ export default function RandomActivity({ currentLanguage }: { currentLanguage: L
                 {isLoading ? (
                     <span className="animate-spin rounded-full w-4 h-4 border-t-blue-500 border-2"></span>
                 ) : (
-                    t.submit
+                    "Help me I'm bored"
                 )}
             </button>
 

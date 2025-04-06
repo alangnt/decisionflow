@@ -15,7 +15,7 @@ export async function POST() {
     const activity = response.choices?.[0]?.message?.content || "No activity generated";
 
     return NextResponse.json({ activity });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    return "There's an unknown error";
   }
 }

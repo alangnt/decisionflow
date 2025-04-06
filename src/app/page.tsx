@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 
-import { french, english, spanish } from "@/lib/translations";
-
 import RandomDecision from "@/components/random-decision";
 import RandomActivity from "@/components/random-activity";
 
@@ -11,8 +9,6 @@ export type Language = 'en' | 'fr' | 'sp';
 
 export default function App() {
   const [currentLanguage, setCurrentLanguage] = useState<'en' | 'fr' | 'sp'>('en');
-
-  const t = currentLanguage === 'en' ? english : currentLanguage === 'sp' ? spanish : french;
 
   const switchLanguage = () => {
       const newLang = currentLanguage === 'en' ? 'fr' : currentLanguage === 'fr' ? 'sp' : 'en';

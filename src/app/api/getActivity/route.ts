@@ -16,6 +16,6 @@ export async function POST() {
 
     return NextResponse.json({ activity });
   } catch (error: unknown) {
-    return "There's an unknown error";
+    return error;
   }
 }

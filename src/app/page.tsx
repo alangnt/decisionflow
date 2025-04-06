@@ -54,7 +54,7 @@ export default function App() {
         <button className="absolute right-0 border border-gray-800 bg-gray-900 rounded-lg p-2 cursor-pointer" onClick={switchLanguage}>{currentLanguage.toUpperCase()}</button>
       </header>
 
-      <main className="flex flex-col items-center max-w-128 w-full place-self-center">
+      <main className="flex flex-col items-center max-w-128 w-full place-self-center mt-12">
         {/* INPUT + SUBMIT */}
         <form className="flex space-x-2 w-full" onSubmit={addDecision}>
           <input 
